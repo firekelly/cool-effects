@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>纯H5+CSS3实现锯齿效果</title>
+</head>
+<style>
+	body {
+		background-color: #eeedf3;
+	}
+	#main {
+		margin:40px 0 0 100px;
+		position: relative;
+		width: 672px;
+		height: 1000px;
+		background-color: #fff;
+		overflow: hidden;
+
+	}
+	.saw {
+		width: 33px;
+		height: 33px;
+		display: inline-block;
+		position: absolute;
+		top: -10px;
+	}
+	.first {
+		display: inline-block;
+		width: 10px;
+		border: 1px solid #eeedf3;
+		position: absolute;
+	}
+	.arc {
+		display: inline-block;
+		width: 19px;
+		height: 19px;
+		border: 1px solid #eeedf3;
+		border-radius: 20px;
+		position: absolute;
+		background-color: #eeedf3;
+	}
+	.line {
+		display: inline-block;
+		width: 11px;
+		border: 1px solid #eeedf3;
+		position: absolute;
+		top: 10px;
+		left: 20px;
+	}
+	.sta {
+		display: inline-block;
+		height: 316px;
+		border: 1px solid;
+		position: absolute;
+	}
+	.right {
+		left: 670px;
+	}
+	.halfarc {
+		width: 28px;
+		height: 28px;
+		border: 1px solid #eeedf3;
+		background-color: #eeedf3;
+		border-radius: 30px;
+		position: absolute;
+		top: 318px;
+		left: -15px;
+	}
+	#main .right {
+		left: 658px;
+	}
+	.dash {
+		width: 624px;
+		border: 2px dashed #dee2e1;
+		position: absolute;
+		top: 333px;
+		left: 22px;
+	}
+</style>
+<body>
+	<div id="main">
+		<span class="first"></span>
+		<span class="halfarc left"></span>
+		<span class="halfarc right"></span>
+		<span class="dash"></span>
+	</div>
+</body>
+<script>
+	var omain = document.querySelector("#main");
+	function creat(n){
+		var osaw = document.createElement("div");
+		var oarc = document.createElement("span");
+		var oline = document.createElement("span");
+		omain.appendChild(osaw);
+		osaw.appendChild(oarc);
+		osaw.appendChild(oline);
+		osaw.className = "saw";
+		osaw.className += " " + "tooth"+n;
+		oarc.className = "arc";
+		oline.className = "line";
+		if(n>20){
+			osaw.style.left = (n-21)*33+11+"px";
+			osaw.style.top = 990 + "px";
+		}else{
+			osaw.style.left = (n-1)*33+11+"px";
+		}
+	};
+	for(var i = 1;i < 41;i++){
+		creat(i);
+	}
+</script>
+</html>
